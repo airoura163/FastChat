@@ -19,7 +19,7 @@ deepspeed --include localhost:0,1 --master_port 61000 fastchat/train/train_lora_
     --save_steps 50 \
     --save_total_limit 10 \
     --logging_strategy "steps" \
-    --logging_steps 10 \
+    --logging_steps 1 \
     --lora_r 8 \
     --lora_alpha 16 \
     --lora_dropout 0.05 \
