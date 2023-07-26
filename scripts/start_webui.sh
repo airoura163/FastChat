@@ -12,6 +12,9 @@ tmux send-keys -t start_webui 'tmux new-window -n gradio ' ENTER
 tmux send-keys -t start_webui "tmux send-keys -t controller 'python3 -m fastchat.serve.controller' ENTER" ENTER
 # NAME2
 tmux send-keys -t start_webui "tmux send-keys -t worker 'python3 -m fastchat.serve.model_worker --model-path /workspace/fschat_plus/FastChat/checkpoints' ENTER" ENTER
+
+sleep 1m
+
 # NAME3
 tmux send-keys -t start_webui "tmux send-keys -t gradio 'python3 -m fastchat.serve.gradio_web_server --share' ENTER" ENTER
 
