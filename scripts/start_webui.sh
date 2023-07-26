@@ -10,8 +10,13 @@ tmux send-keys -t start_webui 'tmux new-window -n gradio ' ENTER
 ## Send the command to each window from window 0
 # NAME1
 tmux send-keys -t start_webui "tmux send-keys -t controller 'python3 -m fastchat.serve.controller' ENTER" ENTER
+
 # NAME2
-tmux send-keys -t start_webui "tmux send-keys -t worker 'python3 -m fastchat.serve.model_worker --model-path /workspace/fschat_plus/FastChat/checkpoints' ENTER" ENTER
+if [ -d "./checkpoints" ]; then
+        tmux send-keys -t start_webui "tmux send-keys -t worker 'python3 -m fastchat.serve.model_worker --model-path /workspace/fschat_plus/FastChat/checkpoints' ENTER" ENTER
+else
+        tmux send-keys -t start_webui "tmux send-keys -t worker 'python3 -m fastchat.serve.model_worker --model-path huggyllama/llama-7b' ENTER" ENTER
+fi
 
 sleep 1m
 
